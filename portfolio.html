@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Portfolio</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="X-UA-compatible" content="IE=edge">
+        <meta name="author" content="SaiPrasad">
+        <link rel="icon" type="image/X-icon" href="portfolio.jpeg">
+        <script src="https://kit.fontawesome.com/eb1382d598.js" crossorigin="anonymous"></script>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                font-family: 'poppins',sans-serif;
+                box-sizing: border-box;
+            }
+            html{
+                scroll-behavior: smooth;
+            }
+            body{
+                background: #080808;
+                color: #fff;
+
+            }
+            #header{
+                width: 100%;
+                height: 100vh;
+                background-image: url("saibgimg.png");
+                background-size: center;
+                background-position: center;
+            }
+            
+            .container{
+
+                padding: 10px 10%;
+            }
+            nav{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            .logo{
+                width: 120px;
+            }
+            nav ul li{
+                display: inline-block;
+                list-style: none;
+                margin: 10px 20px ;
+            }
+            nav ul li a{
+                color: #fff;
+                text-decoration: none;
+                font-size: 18px;
+                position:relative;
+            }
+            nav ul li a::after{
+                content: '';
+                width: 0%;
+                height: 3px;
+                background: #ff004f;
+                position: absolute;
+                left: 0;
+                bottom: -6px;
+                transition: 0.5s;
+            }
+            nav ul li a:hover::after{
+                width: 100%;
+            }
+            .header-text{
+                margin-top: 20%;
+                font-size: 30px;
+                padding-left: 50%;
+            }
+            .header-text h1{
+                font-size: 60px;
+                margin-top: 20px;
+            }
+            .header-text h1 span{
+                color: #ff004f;
+            }
+            /* about content */
+            #about{
+                padding: 80px 0;
+                color: #ababab;
+            }
+            .row{
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            .about-col1{
+                flex-basis: 35%;
+            }
+            .about-col1 img{
+                width: 100%;
+                border-radius: 15px;
+
+            }
+            .about-col2{
+                flex-basis: 60%;
+
+            }
+            .sub{
+                font-size: 60px;
+                font-weight: 600;
+                color: #fff;
+            }
+            .tab-t{
+                display: flex;
+                margin: 20px 0 40px;
+            }
+            .tab-l{
+                margin-right: 50px;
+                font-size: 18px;
+                font-weight: 500;
+                cursor: pointer;
+                position: relative;
+            }
+            .tab-l::after{
+                content: '';
+                width: 0;
+                height: 3px;
+                background: #ff004f;
+                position: absolute;
+                left: 0;
+                bottom: -8px;
+                transition: 0.5s;
+
+
+            }
+            .tab-l.active::after{
+                width: 50%;
+
+            }
+            .tab-c ul li{
+                list-style: none;
+                margin: 10px 0;
+
+            }
+            .tab-c ul li span{
+                color: #b54769;
+                font-size: 14px;
+
+            }
+            .tab-c{
+                display: none;
+
+            }
+            .tab-c.active-t{
+                display: block;
+            }
+            /*services */
+
+            #services{
+                padding: 30px 0;
+
+            }
+
+            .services-l{
+                display: grid;
+                grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+                grid-gap: 40px;
+                margin-top: 40px;
+
+            }
+            .services-l div{
+                background: #262626;
+                padding: 40px;
+                font-size: 13px;
+                font-weight: 300;
+                border-radius: 20px;
+                transition: background 0.5s ,transform 0.5s;
+
+            }
+            .services-l div h2{
+                font-size: 30px;
+                font-weight: 500;
+                margin-bottom: 15px;
+            }
+            .services-l div a{
+                text-decoration: none;
+                color: #fff;
+                font-size: 12px;
+                margin-top: 20px;
+                display: inline-block;
+            }
+            .services-l div:hover{
+                background: #ff004f;
+                transform: translateY(-10px);
+
+            }
+            /*portfolio*/
+
+            #portfolio{
+                padding: 50px 0;
+            }
+            .work-l{
+                display: grid;
+                grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+                grid-gap: 40px;
+                margin-top: 40px;
+            }
+            .work{
+                border-radius: 10px;
+                position: relative;
+                overflow: hidden;
+
+            }
+            .work img {
+                width: 100%;
+                border-radius: 10px;
+                display: block;
+                transition: transform 0.5s;
+
+            }
+            .layer{
+                width: 100%;
+                height: 0;
+                background: linear-gradient(rgba(0,0,0,0.6),#ff004f);
+                border-radius: 10px;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                padding: 0 40px;
+                text-align: center;
+                font-size: 14px;
+                transition: height 0.5s;
+
+            }
+            .layer h3{
+                font-weight: 500;
+                margin-bottom: 20px;
+
+            }
+            .layer a{
+                margin-top: 20px;
+                color: #ff004f;
+                text-decoration: none;
+                font-size: 18px;
+                line-height: 60px;
+                background: #fff;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                text-align: center;
+
+            }
+
+            .work:hover img{
+                transform: scale(1.1);
+            }
+
+            .work:hover .layer{
+                height: 100%;
+
+            }
+            .btn{
+                display: block;
+                margin: 50px auto;
+                width: fit-content;
+                border: 1px solid #ff004f;
+                padding: 14px 50px ;
+                border-radius: 6px;
+                color: #fff;
+                transition: background 0.5s;
+            }
+            .btn:hover{
+                background: #ff004f;
+            }
+            /*contact*/
+            .con-l{
+                flex-basis: 35%;
+            }
+            .con-r{
+                flex-basis: 35%;
+            }
+            .con-l p{
+                margin-top: 30px;
+
+            }
+            .con-l p i{
+                color: #ff004f;
+                margin-right: 15px;
+                font-size: 25px;
+
+
+            }
+            .social{
+                margin-top: 30px;
+
+            }
+            .social a{
+                text-decoration: none;
+                font-size: 30px;
+                margin-right: 15px;
+                color: #ababab;
+                display: inline-block;
+                transition: transform 0.5s;
+                
+            }
+            .social a:hover{
+                color: #ff004f;
+                transform: translate(-5px);
+
+                
+            }
+            .btn.btn2{
+                display: inline-block;
+                background: #ff004f;
+
+            }
+            .con-r form{
+                width: 100%;
+
+            }
+            form input ,form textarea{
+                width: 100%;
+                border: 0;
+                outline: none;
+                background: #262626;
+                padding: 15px;
+                margin: 15px 0;
+                color: #fff;
+                font-size: 18px;
+                border-radius: 6px;
+
+            }
+            form .btn2{
+                padding: 14px 60px;
+                font-size: 18px;
+                margin-top: 20px;
+                cursor: pointer;
+
+            }
+            .copy{
+                width: 100%;
+                text-align: center;
+                padding: 25px 0;
+                background: #262626;
+                font-weight: 300;
+                margin-top: 20px;
+
+            }
+
+            /*css for mobile screen */
+            .nav fas{
+                display: none;
+            }
+            @media only screen and (max-width: 600px){
+                #header{
+                    background-image: url("backphone.png");
+                }
+                .header-text{
+                    margin-top: 100%;
+                    font-size: 16px;
+
+                }
+                .header-text h1{
+                    font-size: 30px;
+
+                }
+                .nav fas{
+                    display: block;
+                    font-size: 25px;
+
+                }
+                nav ul{
+                    background: #ff004f;
+                    position: fixed;
+                    top: 0;
+                    right: -200px;
+                    width: 200px;
+                    height: 100vh;
+                    padding-top: 50px;
+                    z-index: 2;
+                    transition: right 0.5s;
+
+                }
+                nav ul li{
+                    display: block;
+                    margin: 25px;
+
+                }
+                nav ul .fas{
+                    position: absolute;
+                    top: 25px;
+                    left: 25px;
+                    cursor: pointer;
+
+                }
+                .sub{
+                    font-size: 40px;
+
+                }
+                .about-col1,.about-col2{
+                    flex-basis: 100%;
+
+                }
+                .about col1{
+                    margin-bottom: 30px;
+
+                }
+                .about col2{
+                    font-size: 14px;
+
+                    
+                }
+                .tab-l{
+                    font-size: 16px;
+                    margin-right: 20px;
+                }
+                .con-l,.con-r{
+                    flex-basis: 100%;
+                }
+                .copy{
+                    font-size: 14px;
+
+                }
+            }
+            #msg{
+                color: #61b752;
+                margin-top: -40px;
+                display: block;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <div class="container">
+
+                <nav>
+                    <img src="logo.png" class="logo">
+                    <ul id="sidemenu">
+                        <li><a href="#header" >Home</a></li>
+                        <li><a href="#about" >About</a></li>
+                        <li><a href="#services" >Services</a></li>
+                        <li><a href="#portfolio" >Portfolio</a></li>
+                        <li><a href="#contact" >contact</a></li>
+                        <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+
+                    </ul>
+                    <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+
+                </nav>
+                <div class="header-text">
+                    <p>Web Developer</p>
+                    <h1>Hi I'am <span>Sai Prasad</span></h1>
+                </div>
+            </div>
+
+        </div>
+        <!----about content-->
+        <div id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="about-col1">
+                     <img src="about.jpg" alt="about">       
+                    </div>
+                    <div class="about-col2">
+                        <h1 class="sub">About Me</h1>
+                        <p>As a web developer, I thrive on blending creativity with technical expertise to craft immersive digital experiences. With a foundation in HTML, CSS, JavaScript, and various frameworks, I specialize in building dynamic, user-friendly websites that exceed expectations. Meticulous attention to detail, a commitment to staying updated with the latest trends, and a passion for collaboration define my approach. I prioritize user experience and accessibility, ensuring that every project I undertake delivers seamless navigation and functionality.</p>
+                        <div class="tab-t">
+                            <p class="tab-l active" onclick="opentab('skills')">Skills</p>
+                            
+                            <p class="tab-l"  onclick="opentab('education')">Education</p>
+                        </div>
+                        <div class="tab-c active-t" id="skills">
+                            <ul>
+                                <li><span>Web Development</span> <br>Develop user Interface</li>
+                                <li><span>Problem Solving</span> <br>Solving Complex problems</li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-c" id="education">
+                            <ul>
+                                <li><span>2024</span> <br>CMR COLLEGE OF ENGINEERING AND TECHNOLOGY</li>
+                                
+                            </ul>
+                        </div>
+
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---services-->
+        <div id="services">
+            <div class="container">
+                <h1 class="sub">My Services</h1>
+                <div class="services-l">
+                    <div>
+                        <h2>Web Design </h2>
+                        <p>"Crafting captivating web experiences tailored to your brand's essence. From sleek layouts to seamless navigation, we specialize in creating visually stunning and user-friendly websites. Our designs blend innovation with functionality to elevate your online presence and engage your audience effectively."</p>
+                        <a href="#" >Learn More</a>
+                    </div>
+
+                    <div>
+                        <h2>Problem Solving </h2>
+                        <p>"Our problem-solving expertise is your key to overcoming obstacles and achieving your goals. We delve deep into challenges, analyze intricacies, and develop strategic solutions tailored to your unique needs. With a focus on innovation and efficiency, we're dedicated to delivering results that propel your business forward."</p>
+                        <a href="#" >Learn More</a>
+                    </div>
+
+                    <div>
+                        <h2>UI/UX Design </h2>
+                        <p>"Elevate your digital presence with our UI/UX design services, where aesthetics meet functionality seamlessly. We specialize in creating intuitive interfaces that prioritize user experience, driving engagement and satisfaction. From wireframing to prototyping, we meticulously craft designs that captivate audiences and enhance brand credibility."</p>
+                        <a href="#" >Learn More</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+<!-----------portfolio-->
+
+<div id="portfolio">
+    <div class="container">
+        <h1 class="sub">My Work</h1>
+        <div class="work-l">
+
+            <div class="work">
+
+                <img src="matrix.jpeg">
+                <div class="layer">
+                    <h3>Matrix Calculator</h3>
+                    <p>Successfully integrated a user-friendly matrix calculator into various projects, streamlining complex computations for enhanced efficiency."</p>
+                    <a href="#" >Learn More</a>
+                </div>
+
+            </div>
+
+            <div class="work">
+                    <img src="currency.png">
+                    <div class="layer">
+                        <h3>Currency Converter</h3>
+                        <p>"Implemented a dynamic currency converter feature, enabling seamless currency conversions and enhancing user accessibility across diverse international markets."</p>
+                        <a href="#" >Learn More</a>
+                    </div>
+
+            </div>
+
+            <div class="work">
+
+                <img src="cal.jpeg">
+                <div class="layer">
+                    <h3>Web Calculator</h3>
+                    <p>"Designed and developed a versatile web app calculator with advanced functionality, delivering accurate computations and intuitive user experience for enhanced productivity."</p>
+                    <a href="#" >Learn More</a>
+                </div>
+
+            </div>
+        </div>
+
+        <a href="#" class="btn">See More</a>
+    </div>
+</div>
+
+<!---------contact us -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="con-l">
+                <h1 class="sub">Contact Me</h1>
+                <p> <i class="fa-regular fa-paper-plane"></i>
+                    chindamsaiprasad@gmail.com</p>
+                <p><i class="fa-solid fa-phone-volume"></i>
+                    9391573505</p>
+                <div class="social">
+                    <a href=""><i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href=""><i class="fa-brands fa-twitter-square"></i>
+                    </a>
+                    <a href=""><i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href=""><i class="fa-brands fa-linkedin"></i>
+                    </a>
+
+
+                </div>
+                <a href="#" download class="btn btn2">Download CV</a>
+            </div>
+            <div class="con-r">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message" ></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg">Hello </span>
+
+            </div>
+        </div>
+    </div>
+    <div class="copy">
+        <p>Copyright Sai Prasad</p>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+        <script>
+
+            var tabl= document.getElementsByClassName("tab-l");
+            var tabc= document.getElementsByClassName("tab-c");
+            function opentab(tabname){
+                for(tablink of tabl){
+                    tablink.classList.remove("active");
+
+                }
+                for(tabcontent of tabc){
+                    tabcontent.classList.remove("active-t");
+                    
+                }
+                event.currentTarget.classList.add("active");
+                document.getElementById(tabname).classList.add("active-t");
+
+            }
+
+        </script>
+
+        <script>
+        var sidemenu= document.getElementById("sidemenu");
+        function openmenu(){
+            sidemenu.style.right= "0";
+        }
+
+        function closemenu(){
+            sidemenu.style.right= "-200px";
+        }
+        </script>
+
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxgUdFvptk72vTYmrS0Kcta5rOHeuMrzgGwsrAZfNgHcHy3bHzOjYg_KNl93whMGQo/exec'
+            const form = document.forms['submit-to-google-sheet']
+          const msg = document.getElementById("msg")
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    msg.innerHTML="Message Sent Successfully"
+                    setTimeout(function(){
+                        msg.innerHTML=""
+                    },5000)
+                    form.reset()
+                })
+
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+    </body>
+</html>
